@@ -6,8 +6,6 @@
 #include "ui.h"
 
 lv_obj_t * ui_meni = NULL;
-lv_obj_t * ui_Button3 = NULL;
-lv_obj_t * ui_Label3 = NULL;
 lv_obj_t * ui_Button4 = NULL;
 lv_obj_t * ui_Label4 = NULL;
 lv_obj_t * ui_Button5 = NULL;
@@ -44,7 +42,7 @@ void ui_event_Button15(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_RELEASED) {
-        _ui_screen_change(&ui_rezimi_rada, LV_SCR_LOAD_ANIM_NONE, 5, 0, &ui_rezimi_rada_screen_init);
+        _ui_screen_change(&ui_zadaj_temperaturu, LV_SCR_LOAD_ANIM_NONE, 5, 0, &ui_zadaj_temperaturu_screen_init);
     }
 }
 
@@ -55,31 +53,11 @@ void ui_meni_screen_init(void)
     ui_meni = lv_obj_create(NULL);
     lv_obj_clear_flag(ui_meni, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-    ui_Button3 = lv_btn_create(ui_meni);
-    lv_obj_set_width(ui_Button3, 260);
-    lv_obj_set_height(ui_Button3, 80);
-    lv_obj_set_x(ui_Button3, -252);
-    lv_obj_set_y(ui_Button3, -177);
-    lv_obj_set_align(ui_Button3, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Button3, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
-    lv_obj_clear_flag(ui_Button3, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_text_color(ui_Button3, lv_color_hex(0x040101), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_Button3, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    ui_Label3 = lv_label_create(ui_Button3);
-    lv_obj_set_width(ui_Label3, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label3, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label3, 0);
-    lv_obj_set_y(ui_Label3, 1);
-    lv_obj_set_align(ui_Label3, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label3, "TEMPERATURA");
-    lv_obj_set_style_text_font(ui_Label3, &lv_font_montserrat_30, LV_PART_MAIN | LV_STATE_DEFAULT);
-
     ui_Button4 = lv_btn_create(ui_meni);
     lv_obj_set_width(ui_Button4, 256);
     lv_obj_set_height(ui_Button4, 80);
     lv_obj_set_x(ui_Button4, 252);
-    lv_obj_set_y(ui_Button4, -179);
+    lv_obj_set_y(ui_Button4, -177);
     lv_obj_set_align(ui_Button4, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Button4, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_Button4, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
@@ -99,8 +77,8 @@ void ui_meni_screen_init(void)
     ui_Button5 = lv_btn_create(ui_meni);
     lv_obj_set_width(ui_Button5, 260);
     lv_obj_set_height(ui_Button5, 80);
-    lv_obj_set_x(ui_Button5, -249);
-    lv_obj_set_y(ui_Button5, -72);
+    lv_obj_set_x(ui_Button5, -246);
+    lv_obj_set_y(ui_Button5, -177);
     lv_obj_set_align(ui_Button5, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Button5, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_Button5, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
@@ -120,7 +98,7 @@ void ui_meni_screen_init(void)
     ui_Button15 = lv_btn_create(ui_meni);
     lv_obj_set_width(ui_Button15, 260);
     lv_obj_set_height(ui_Button15, 80);
-    lv_obj_set_x(ui_Button15, 253);
+    lv_obj_set_x(ui_Button15, 252);
     lv_obj_set_y(ui_Button15, -72);
     lv_obj_set_align(ui_Button15, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Button15, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
@@ -216,8 +194,6 @@ void ui_meni_screen_destroy(void)
 
     // NULL screen variables
     ui_meni = NULL;
-    ui_Button3 = NULL;
-    ui_Label3 = NULL;
     ui_Button4 = NULL;
     ui_Label4 = NULL;
     ui_Button5 = NULL;

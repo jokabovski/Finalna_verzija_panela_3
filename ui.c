@@ -36,7 +36,7 @@ void ui_init(void)
     ui_meni_screen_init();
     ui_manuelni_rad_screen_init();
     ui_rezimi_rada_screen_init();
-    ui_zadavanje_temperatura_screen_init();
+    ui_zadaj_temperaturu_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_meni);
 }
@@ -46,5 +46,5 @@ void ui_destroy(void)
     ui_meni_screen_destroy();
     ui_manuelni_rad_screen_destroy();
     ui_rezimi_rada_screen_destroy();
-    ui_zadavanje_temperatura_screen_destroy();
+    ui_zadaj_temperaturu_screen_destroy();
 }

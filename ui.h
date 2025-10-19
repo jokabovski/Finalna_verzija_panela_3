@@ -21,7 +21,7 @@ extern "C" {
 #include "ui_meni.h"
 #include "ui_manuelni_rad.h"
 #include "ui_rezimi_rada.h"
-#include "ui_zadavanje_temperatura.h"
+#include "ui_zadaj_temperaturu.h"
 
 ///////////////////// VARIABLES ////////////////////
 

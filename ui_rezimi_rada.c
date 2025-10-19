@@ -110,6 +110,8 @@ void ui_rezimi_rada_screen_init(void)
     lv_obj_set_y(ui_Label18, -136);
     lv_obj_set_align(ui_Label18, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label18, "Upisi...");
+    lv_obj_set_style_text_color(ui_Label18, lv_color_hex(0xE71C1C), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_Label18, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label18, &lv_font_montserrat_30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Label19 = lv_label_create(ui_rezimi_rada);
@@ -120,6 +122,8 @@ void ui_rezimi_rada_screen_init(void)
     lv_obj_set_align(ui_Label19, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label19, "Upisi...");
     lv_obj_add_flag(ui_Label19, LV_OBJ_FLAG_CLICKABLE);     /// Flags
+    lv_obj_set_style_text_color(ui_Label19, lv_color_hex(0xE71C1C), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_Label19, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label19, &lv_font_montserrat_30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Keyboard2 = lv_keyboard_create(ui_rezimi_rada);
@@ -211,6 +215,8 @@ void ui_rezimi_rada_screen_init(void)
     lv_obj_set_align(ui_Label24, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label24, "Upisi...");
     lv_obj_add_flag(ui_Label24, LV_OBJ_FLAG_CLICKABLE);     /// Flags
+    lv_obj_set_style_text_color(ui_Label24, lv_color_hex(0xE71C1C), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_Label24, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label24, &lv_font_montserrat_30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Button10 = lv_btn_create(ui_rezimi_rada);
