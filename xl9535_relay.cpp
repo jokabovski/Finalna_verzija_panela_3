@@ -21,8 +21,8 @@ bool XL9535Relay::begin(uint8_t address, int sda, int scl) {
         Serial.print(", SCL=");
         Serial.println(scl);
     } else {
-        Wire.begin();
-        Serial.println("I2C initialized with default pins");
+        // I2C already initialized by display system
+        Serial.println("Using existing I2C initialization");
     }
     
     // Test connection

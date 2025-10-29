@@ -79,11 +79,46 @@ void my_touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data)
    }
 }
 
+//Moj kod za I2C
+
+void scanI2C() {
+    Serial.println("Scanning I2C bus...");
+    
+    int deviceCount = 0;
+    
+    for (uint8_t address = 1; address < 127; address++) {
+        Wire.beginTransmission(address);
+        uint8_t error = Wire.endTransmission();
+        
+        if (error == 0) {
+            Serial.print("I2C device found at address 0x");
+            if (address < 16) Serial.print("0");
+            Serial.print(address, HEX);
+            Serial.println(" !");
+            deviceCount++;
+            
+            // Identify common devices
+            if (address == 0x14) Serial.println("  -> GT911 Touch Controller");
+            if (address == 0x20) Serial.println("  -> This could be your XL9535 relay board!");
+            if (address >= 0x20 && address <= 0x27) Serial.println("  -> XL9535 address range");
+        }
+    }
+    
+    if (deviceCount == 0) {
+        Serial.println("\n*** NO I2C DEVICES FOUND ***");
+    } else {
+        Serial.print("\nTotal devices found: ");
+        Serial.println(deviceCount);
+    }
+    
+    Serial.println("=== Scan Complete ===\n");
+}
+
 
 void setup()
 {
   Serial.begin(9600);
-  Wire.begin();
+  
 
   delay(2000);  // Wait for Serial Monitor
   Serial.println("LVGL Widgets Demo");
@@ -149,18 +184,23 @@ void setup()
 
   //Ovde stavljas svoj kod!
 
+  // DIAGNOSTIC: Scan I2C bus to find devices
+  Serial.println("\n=== Scanning I2C Bus ===");
+  scanI2C();
+
   // Initialize screen timeout manager
     // Parameters: timeout (30000ms = 30s), dim brightness (0), active brightness (255)
     screenTimeout.begin(30000, 0, 255);
 
+  
   // Initialize relay board
     // Parameters: address, SDA pin, SCL pin
-    if (relayBoard.begin(0x20, 19, 20)) {
+    if (relayBoard.begin(0x20)) {
       Serial.println("Relay board ready!");
     } else {
       Serial.println("Relay board initialization failed!");
     }
-
+  
 
 }
 
