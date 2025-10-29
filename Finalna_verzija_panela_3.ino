@@ -147,6 +147,13 @@ void setup()
 
   //Display Prepare
   tft.begin();
+  Serial.println("Display started");
+  
+  // MANUALLY INITIALIZE I2C - this is the fix!
+  Wire.begin(19, 20);  // SDA=19, SCL=20 for CrowPanel 50
+  delay(100);
+  Serial.println("I2C manually initialized on pins SDA=19, SCL=20");
+
   tft.fillScreen(TFT_BLACK);
   tft.setTextSize(2);
   delay(200);
@@ -184,22 +191,22 @@ void setup()
 
   //Ovde stavljas svoj kod!
 
-  // DIAGNOSTIC: Scan I2C bus to find devices
-  Serial.println("\n=== Scanning I2C Bus ===");
-  scanI2C();
+   // NOW scan I2C - after tft.begin() initialized it!
+    Serial.println("\n=== Scanning I2C Bus ===");
+    scanI2C();
 
-  // Initialize screen timeout manager
-    // Parameters: timeout (30000ms = 30s), dim brightness (0), active brightness (255)
+    // Initialize screen timeout manager
     screenTimeout.begin(30000, 0, 255);
 
-  
-  // Initialize relay board
-    // Parameters: address, SDA pin, SCL pin
+    // Initialize relay board
+    Serial.println("\n=== Initializing Relay Board ===");
     if (relayBoard.begin(0x20)) {
-      Serial.println("Relay board ready!");
+      Serial.println("✓ Relay board ready!");
     } else {
-      Serial.println("Relay board initialization failed!");
+      Serial.println("✗ Relay board initialization failed!");
     }
+
+    
   
 
 }
@@ -208,7 +215,7 @@ void loop()
 {
     lv_timer_handler();
 
-    relayBoard.allOn();
+    
 
 
     // Update screen timeout manager
